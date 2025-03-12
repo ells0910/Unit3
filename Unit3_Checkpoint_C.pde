@@ -13,8 +13,8 @@ int darkdarkgreen =  0xFF384031;
 
 int toggle;
 
-public void setup() {
-  /* size commented out by preprocessor */;
+ void setup() {
+   size(800,600);
   strokeWeight(5);
   textSize(30);
   
@@ -23,7 +23,7 @@ public void setup() {
  
 } //======end of setup-------------------
 
-public void draw() {
+void draw() {
   background(lightergreen);
   
   fill(green);
@@ -31,17 +31,21 @@ public void draw() {
   rect(100,100,200,100);
   
   if ( toggle > 0) {
-    
-    guidelines();
+    //guidelines();
     
   }
   
 } //======end of draw----------------------
 
 
-public void mouseReleased() {
+void mouseReleased() {
   if (mouseX > 100 && mouseX < 300 && mouseY > 100 && mouseY < 200); {
    toggle = toggle * -1; 
   }
   
+  
 } //=======end of mouseReleased------------
+
+//void guidelines() {
+//  fill(darkergreen);
+//  stroke(1);
