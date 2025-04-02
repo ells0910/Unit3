@@ -11,14 +11,14 @@ int darkergreen   =  0xFF667558;
 int darkestgreen  =  0xFF505C45;
 int darkdarkgreen =  0xFF384031;
 
-int toggle;
+
+
+
 
  void setup() {
    size(800,600);
   strokeWeight(5);
   textSize(30);
-  
- toggle = 1;
  
  
 } //======end of setup-------------------
@@ -28,24 +28,21 @@ void draw() {
   
   fill(green);
   stroke(mutegreen);
-  rect(100,100,200,100);
+  rect(50,100,200,100);
   
-  if ( toggle > 0) {
-    //guidelines();
-    
-  }
+  fill(darkergreen);
+  rect(300,100,200,100);
+  
+  fill(darkestgreen);
+  rect(550,100,200,100);
+  
+//  fill();
+  circle(400,400,200);
+  
   
 } //======end of draw----------------------
 
 
 void mouseReleased() {
-  if (mouseX > 100 && mouseX < 300 && mouseY > 100 && mouseY < 200); {
-   toggle = toggle * -1; 
-  }
-  
   
 } //=======end of mouseReleased------------
-
-//void guidelines() {
-//  fill(darkergreen);
-//  stroke(1);
