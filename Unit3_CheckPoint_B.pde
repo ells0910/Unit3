@@ -11,14 +11,13 @@ int darkergreen   =  0xFF667558;
 int darkestgreen  =  0xFF505C45;
 int darkdarkgreen =  0xFF384031;
 
-
-
+color selcectedColor;
 
 
  void setup() {
    size(800,600);
   strokeWeight(5);
-  textSize(30);
+  stroke(mutegreen);
  
  
 } //======end of setup-------------------
@@ -27,7 +26,6 @@ void draw() {
   background(lightergreen);
   
   fill(green);
-  stroke(mutegreen);
   rect(50,100,200,100);
   
   fill(darkergreen);
@@ -42,7 +40,19 @@ void draw() {
   
 } //======end of draw----------------------
 
+void tactile(int x, int y) {
+  if (dist(x,y, mouseX, mouseY) < 100) {
+    selectedColor = green; 
+  }
+    
+
 
 void mouseReleased() {
+  
+  //Green
+  if (dist(50,100, mouseX, mouseY) < 100) {
+    selectedColor = green; 
+  }
+
   
 } //=======end of mouseReleased------------
