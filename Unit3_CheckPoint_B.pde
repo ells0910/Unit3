@@ -47,7 +47,7 @@ void tactile(int x, int y) {
     
 
 
-void mouseReleased() {
+//void mouseReleased() {
   
   //Green
   if (dist(50,100, mouseX, mouseY) < 100) {
