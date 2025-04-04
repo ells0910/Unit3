@@ -20,6 +20,7 @@ color selectedColor;
 
 void setup() {
   size(1000, 800); 
+  background(white);
   strokeWeight(3);
   stroke(black);
 }
@@ -27,6 +28,36 @@ void setup() {
 void draw() {
   
   //Sidebar
+  stroke(brown);
+  fill(brown);
+  rect(0,0,250,800);
+  strokeWeight(3);
+  stroke(black);
   
-} // -----------End of Draw-------
+  //Colors 
+  fill(pink);
+  circle(70,100,50);
+  
+  fill(purple);
+  circle(70,200,50);
+  
+  fill(blue);
+  circle(70,300,50);
+  
+  fill(orange);
+  circle(170,100,50);
+
+
+  
+  
+   stroke(black);
+  
+} // -----------End of Draw----------
+
+void mouseDragged() {
+  
+  line(pmouseX, pmouseY, mouseX, mouseY);
+  
+  
+} // -----------End of MouseDragged--
   
