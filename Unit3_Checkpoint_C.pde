@@ -1,51 +1,50 @@
 //Ellie Gao
 //2-3
-//03/11/2025
-//Checkpoint3
+//Unit3 Checkpoint C - Sliders
 
-int lightergreen  =  0xFFD4F3B7;
-int lightgreen    =  0xFFBFDAA4;
-int green         =  0xFFA9C191;
-int mutegreen     =  0xFF93A87E;
-int darkergreen   =  0xFF667558;
-int darkestgreen  =  0xFF505C45;
-int darkdarkgreen =  0xFF384031;
+//Pallete of Colors
 
-int toggle;
+color purple     = #E0D4E7;
+color black      = #000000; 
+color white      = #FFFFFF;
 
- void setup() {
-   size(800,600);
+float sliderX;  // floating point notation
+float shade;
+float thickness = 0;
+
+
+void setup() {
+  size(800, 800);
   strokeWeight(5);
-  textSize(30);
-  
- toggle = 1;
- 
- 
-} //======end of setup-------------------
+  stroke(black);
+  fill(purple);
+  sliderX = 400;
+ // shade = 0;
+}
 
 void draw() {
-  background(lightergreen);
+  background(white);
   
-  fill(green);
-  stroke(mutegreen);
-  rect(100,100,200,100);
-  
-  if ( toggle > 0) {
-    //guidelines();
-    
-  }
-  
-} //======end of draw----------------------
+  thickness = map(sliderX, 100, 700, 15, 0);
+    strokeWeight(thickness);
 
 
+  line(400, 200, 400, 600);
+  circle(400, sliderX, 50);
+}
+
+void mouseDragged() {
+  controlSlider();
+   }
 void mouseReleased() {
-  if (mouseX > 100 && mouseX < 300 && mouseY > 100 && mouseY < 200); {
-   toggle = toggle * -1; 
+  controlSlider();
+   }
+
+void controlSlider() {
+  if(mouseY > 200 && mouseY < 600 && mouseX > 370  && mouseX < 425) {
+    sliderX = mouseY;
   }
   
+ // shade = map(sliderX, 100, 700, 0, 255);
   
-} //=======end of mouseReleased------------
-
-//void guidelines() {
-//  fill(darkergreen);
-//  stroke(1);
+}
