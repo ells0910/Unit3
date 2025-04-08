@@ -1,4 +1,4 @@
-// Ellie Gao 
+// Ellie Gao  :)
 // 2-3
 // 04-03-2025
 //Unit 3 Project
@@ -15,14 +15,21 @@ color brown      = #DDD5D5;
 color black      = #000000; 
 color white      = #FFFFFF;
 
+
+float sliderX;
+float thickness = 0;
+
 //variables for color selection
 color selectedColor; 
 
 void setup() {
   size(1000, 800); 
   background(white);
-  strokeWeight(3);
+  strokeWeight(5);
   stroke(black);
+  fill(black);
+  //selectedColor black;
+  sliderX = 110;
 }
 
 void draw() {
@@ -34,30 +41,59 @@ void draw() {
   strokeWeight(3);
   stroke(black);
   
+  
   //Colors 
+  
   fill(pink);
-  circle(70,100,50);
+  circle(70, 100, 50);
   
   fill(purple);
-  circle(70,200,50);
+  circle(70, 200, 50);
   
   fill(blue);
-  circle(70,300,50);
+  circle(70, 300, 50);
   
   fill(orange);
-  circle(170,100,50);
+  circle(170, 100, 50);
+  
+  fill(green);
+  circle(170, 200, 50);
+  
+  fill(red);
+  circle(170, 300, 50);
+  
+  fill(black);
+  circle(120, 350, 40);
+  
+  fill(selectedColor);
+  rect(
+  
 
 
   
-  
-   stroke(black);
+//Slider
+ thickness = map(sliderX, 10, 400,0,20);
+   line(20,400,220,400);
+   strokeWeight(thickness);
+   circle(sliderX, 400, 20);
+   line(60,420,180,420);
+   
   
 } // -----------End of Draw----------
 
 void mouseDragged() {
-  
+  controlSlider();
   line(pmouseX, pmouseY, mouseX, mouseY);
-  
+}
+void mouseReleased() {
+  controlSlider();
+}
+
+void controlSlider() {
+  if(mouseX>20 && mouseX<220 && mouseY>390 && mouseY<410) {
+    sliderX = mouseX;
+  }
+ 
+
   
 } // -----------End of MouseDragged--
-  
