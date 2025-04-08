@@ -44,29 +44,37 @@ void draw() {
   
   //Colors 
   
+  tactile(70, 100, 50);
   fill(pink);
   circle(70, 100, 50);
   
+  tactile(70, 200, 50);
   fill(purple);
   circle(70, 200, 50);
   
+  tactile(70,300,50);
   fill(blue);
   circle(70, 300, 50);
   
+  tactile(170, 100, 50);
   fill(orange);
   circle(170, 100, 50);
   
+  tactile(170, 200, 50);
   fill(green);
   circle(170, 200, 50);
   
+  tactile(170,300,50);
   fill(red);
   circle(170, 300, 50);
   
+  tactile(120, 350, 40);
   fill(black);
   circle(120, 350, 40);
   
+  
   fill(selectedColor);
-  rect(
+  rect(20,430,200,20);
   
 
 
@@ -87,6 +95,12 @@ void mouseDragged() {
 }
 void mouseReleased() {
   controlSlider();
+  
+  //pink
+  if (dist(70, 100, mouseX, mouseY) < 25) {
+    selectedColor = pink;
+  }
+  
 }
 
 void controlSlider() {
@@ -97,3 +111,11 @@ void controlSlider() {
 
   
 } // -----------End of MouseDragged--
+
+void tactile(int x, int y, int r) {
+  if (dist(x, y, mouseX, mouseY) < r) {
+    stroke(white);
+  } else {
+    stroke(black);
+  }
+} // ------------ End of Tactile ---------
