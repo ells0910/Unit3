@@ -72,7 +72,7 @@ void draw() {
   fill(black);
   circle(120, 350, 40);
   
-  
+  stroke(black);
   fill(selectedColor);
   rect(20,430,200,20);
   
@@ -82,15 +82,18 @@ void draw() {
 //Slider
  thickness = map(sliderX, 10, 400,0,20);
    line(20,400,220,400);
+  fill(black);
    strokeWeight(thickness);
    circle(sliderX, 400, 20);
    line(60,420,180,420);
    
+  stroke(selectedColor);
   
 } // -----------End of Draw----------
 
 void mouseDragged() {
   controlSlider();
+  fill(selectedColor);
   line(pmouseX, pmouseY, mouseX, mouseY);
 }
 void mouseReleased() {
@@ -100,6 +103,36 @@ void mouseReleased() {
   if (dist(70, 100, mouseX, mouseY) < 25) {
     selectedColor = pink;
   }
+  
+  //purple
+  if(dist(70, 200, mouseX, mouseY) <25) {
+    selectedColor = purple; 
+  }
+  
+  //blue
+   if (dist(70, 300, mouseX, mouseY) < 25) {
+    selectedColor = blue;
+   }
+  
+  //orange
+  if (dist(170, 100, mouseX, mouseY) < 25) {
+    selectedColor = orange;
+   }
+   
+   //green
+   if (dist(170, 200, mouseX, mouseY) < 25) {
+    selectedColor = green;
+   }
+  
+  //red
+     if (dist(170, 300, mouseX, mouseY) < 25) {
+    selectedColor = red;
+   }
+   
+   //black
+      if (dist(120, 350, mouseX, mouseY) < 20) {
+    selectedColor = black;
+   }
   
 }
 
