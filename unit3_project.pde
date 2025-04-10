@@ -22,12 +22,18 @@ float thickness = 0;
 //variables for color selection
 color selectedColor; 
 
+//stamp
+PImage chiikawa;
+
+
 void setup() {
   size(1000, 800); 
   background(white);
   strokeWeight(5);
   stroke(black);
   fill(black);
+  chiikawa = loadImage("chiikawa.png");
+  
   //selectedColor black;
   sliderX = 110;
 }
@@ -40,6 +46,8 @@ void draw() {
   rect(0,0,250,800);
   strokeWeight(3);
   stroke(black);
+  
+  //stamp
   
   
   //Colors 
@@ -74,18 +82,18 @@ void draw() {
   
   stroke(black);
   fill(selectedColor);
-  rect(20,430,200,20);
+  rect(20,460,200,20);
   
 
 
   
 //Slider
- thickness = map(sliderX, 10, 400,0,20);
+ thickness = map(sliderX, 10, 400,0,40);
    line(20,400,220,400);
   fill(black);
    strokeWeight(thickness);
    circle(sliderX, 400, 20);
-   line(60,420,180,420);
+   line(60,440,180,440);
    
   stroke(selectedColor);
   
