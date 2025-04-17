@@ -1,4 +1,4 @@
-// Ellie Gao  :)
+// Ellie Gao  :(
 // 2-3
 // 04-03-2025
 //Unit 3 Project
@@ -42,13 +42,13 @@ void setup() {
 
 void draw() {
 
-   //toolbar
+  //toolbar
   stroke(0);
   strokeWeight(1);
   fill(white);
-  rect(70,490,100,100);
-  
-  
+  rect(70, 490, 100, 100);
+
+
   //Sidebar
   strokeWeight(3);
   stroke(brown);
@@ -99,13 +99,14 @@ void draw() {
   //New Button
   textSize(20);
   stroke(black);
+  text("new", 120, 620);
   fill(white);
   rect(20, 600, 200, 40);
-  text("new", 120, 620);
-  
+
   //Load Button
-  rect(20, 650, 200, 40);
   
+  rect(20, 650, 200, 40);
+
   //Save Button
   rect(20, 700, 200, 40);
 
@@ -118,7 +119,7 @@ void draw() {
   strokeWeight(thickness);
   circle(sliderX, 400, 20);
   line(60, 440, 180, 440);
- 
+
 
   stroke(selectedColor);
 } // -----------End of Draw----------
@@ -133,90 +134,114 @@ void mouseDragged() {
     line(pmouseX, pmouseY, mouseX, mouseY);
   } else {
     //chiikawa drawing
-    image(chiikawa,mouseX, mouseY, 100, 100);
+    image(chiikawa, mouseX, mouseY, 100, 100);
   }
-  
-  
-  
 }
-  void mouseReleased() {
-    controlSlider();
+void mouseReleased() {
+  controlSlider();
 
-    //new button
-    if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
-      background(white);
-    }
-
-      //Chiikawa button
-    if (mouseX > 60 && mouseX < 100 && mouseY > 490 && mouseY < 530); {
-  chiikawaOn = !chiikawaOn;
-    }
-
-    //save button
-    //  if(mouseX > 20 && mouseX < 220 && mouseY >
-
-    //pink
-    if (dist(70, 100, mouseX, mouseY) < 25) {
-      selectedColor = pink;
-    }
-
-    //purple
-    if (dist(70, 200, mouseX, mouseY) <25) {
-      selectedColor = purple;
-    }
-
-    //blue
-    if (dist(70, 300, mouseX, mouseY) < 25) {
-      selectedColor = blue;
-    }
-
-    //orange
-    if (dist(170, 100, mouseX, mouseY) < 25) {
-      selectedColor = orange;
-    }
-
-    //green
-    if (dist(170, 200, mouseX, mouseY) < 25) {
-      selectedColor = green;
-    }
-
-    //red
-    if (dist(170, 300, mouseX, mouseY) < 25) {
-      selectedColor = red;
-    }
-
-    //black
-    if (dist(120, 350, mouseX, mouseY) < 20) {
-      selectedColor = black;
-    }
+  //new button
+  if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
+    background(white);
   }
 
-  void controlSlider() {
-    if (mouseX>20 && mouseX<220 && mouseY>390 && mouseY<410) {
-      sliderX = mouseX;
-    }
-  } // -----------End of MouseDragged--
-
-  void tactile(int x, int y, int r) {
-    if (dist(x, y, mouseX, mouseY) < r) {
-      stroke(white);
-    } else {
-      stroke(black);
-    }
+  //Chiikawa button
+  if (mouseX > 60 && mouseX < 180 && mouseY > 490 && mouseY < 590) {
+    chiikawaOn = !chiikawaOn;
   }
 
-  void tactile(int x, int y, int w, int h) {
-    if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-      fill(yellow);
-    } else {
-      fill(white);
+  //Load Button
+  if (mouseX > 20 && mouseX < 220 && mouseY > 650 && mouseY < 690) {
+    selectInput("Pick an image to load", "openImage");
+  }
+
+  // Save button
+  if (mouseX > 20 && mouseX < 220 && mouseY > 700 && mouseY < 740) {
+    selectOutput("Choose a name for your image file", "saveImage");
+  }
+
+
+  //pink
+  if (dist(70, 100, mouseX, mouseY) < 25) {
+    selectedColor = pink;
+  }
+
+  //purple
+  if (dist(70, 200, mouseX, mouseY) <25) {
+    selectedColor = purple;
+  }
+
+  //blue
+  if (dist(70, 300, mouseX, mouseY) < 25) {
+    selectedColor = blue;
+  }
+
+  //orange
+  if (dist(170, 100, mouseX, mouseY) < 25) {
+    selectedColor = orange;
+  }
+
+  //green
+  if (dist(170, 200, mouseX, mouseY) < 25) {
+    selectedColor = green;
+  }
+
+  //red
+  if (dist(170, 300, mouseX, mouseY) < 25) {
+    selectedColor = red;
+  }
+
+  //black
+  if (dist(120, 350, mouseX, mouseY) < 20) {
+    selectedColor = black;
+  }
+}
+
+void controlSlider() {
+  if (mouseX>20 && mouseX < 220 && mouseY > 390 && mouseY < 410) {
+    sliderX = mouseX;
+  }
+} // -----------End of MouseDragged--
+
+void tactile(int x, int y, int r) {
+  if (dist(x, y, mouseX, mouseY) < r) {
+    stroke(white);
+  } else {
+    stroke(black);
+  }
+}
+
+void tactile(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(yellow);
+  } else {
+    fill(white);
+  }
+} // ------------ End of Tactile ---------
+
+void chiikawaOnOff() {
+  if (chiikawaOn == true) {
+    stroke(white);
+  } else {
+    stroke(black);
+  }
+}
+
+void saveImage(File f) {
+  if (f != null) {
+    PImage canvas = get(71, 1, width-71, height-1);
+    canvas.save(f.getAbsolutePath());
+  }
+}
+
+void openImage(File f) {
+  if (f != null) {
+    //KLUDGE
+    int n = 0;
+    while (n < 10) {
+      PImage pic = loadImage(f.getPath());
+      image(pic, 250, 0);
+      n=n+1;
     }
-  } // ------------ End of Tactile ---------
-  
-  void chiikawaOnOff() {
-    if (chiikawaOn == true) {
-      stroke(white);
-    } else {
-      stroke(black);
-    }
- }
+  }
+}
