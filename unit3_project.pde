@@ -24,7 +24,7 @@ color selectedColor;
 
 //stamp
 PImage chiikawa;
-boolean chiikawaOn  // true or false
+boolean chiikawaOn;  // true or false
 
 
 void setup() {
@@ -34,6 +34,7 @@ void setup() {
   stroke(black);
   fill(black);
   chiikawa = loadImage("chiikawa.png");
+  chiikawaOn = false;
 
   //selectedColor black;
   sliderX = 110;
@@ -41,6 +42,13 @@ void setup() {
 
 void draw() {
 
+   //toolbar
+  stroke(0);
+  strokeWeight(1);
+  fill(white);
+  rect(70,490,100,100);
+  
+  
   //Sidebar
   strokeWeight(3);
   stroke(brown);
@@ -51,6 +59,7 @@ void draw() {
 
   //stamp
   tactile(60, 490, 120, 100);
+  chiikawaOnOff();
   rect(60, 490, 120, 100);
   image(chiikawa, 70, 480, 100, 100);
 
@@ -88,10 +97,15 @@ void draw() {
   rect(20, 460, 200, 20);
 
   //New Button
+  textSize(20);
+  stroke(black);
   fill(white);
   rect(20, 600, 200, 40);
+  text("new", 120, 620);
+  
   //Load Button
   rect(20, 650, 200, 40);
+  
   //Save Button
   rect(20, 700, 200, 40);
 
@@ -104,89 +118,105 @@ void draw() {
   strokeWeight(thickness);
   circle(sliderX, 400, 20);
   line(60, 440, 180, 440);
+ 
 
   stroke(selectedColor);
 } // -----------End of Draw----------
 
 void mouseDragged() {
   //stamp
-  if(chiikawaOn == false) {
+  if (chiikawaOn == false) {
+
+    //squiggly line
+    controlSlider();
+    fill(selectedColor);
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  } else {
+    //chiikawa drawing
+    image(chiikawa,mouseX, mouseY, 100, 100);
+  }
   
-  //squiggly line
-  controlSlider();
-  fill(selectedColor);
-  line(pmouseX, pmouseY, mouseX, mouseY);
-  } else {
-    //durian drawing
-//    image(mouseX, mouseY, -------------------------------stopped at yhis 6.00
+  
+  
 }
-void mouseReleased() {
-  controlSlider();
+  void mouseReleased() {
+    controlSlider();
 
-  //new button
-  if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
-    background(white);
+    //new button
+    if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
+      background(white);
+    }
+
+      //Chiikawa button
+    if (mouseX > 60 && mouseX < 100 && mouseY > 490 && mouseY < 530); {
+  chiikawaOn = !chiikawaOn;
+    }
+
+    //save button
+    //  if(mouseX > 20 && mouseX < 220 && mouseY >
+
+    //pink
+    if (dist(70, 100, mouseX, mouseY) < 25) {
+      selectedColor = pink;
+    }
+
+    //purple
+    if (dist(70, 200, mouseX, mouseY) <25) {
+      selectedColor = purple;
+    }
+
+    //blue
+    if (dist(70, 300, mouseX, mouseY) < 25) {
+      selectedColor = blue;
+    }
+
+    //orange
+    if (dist(170, 100, mouseX, mouseY) < 25) {
+      selectedColor = orange;
+    }
+
+    //green
+    if (dist(170, 200, mouseX, mouseY) < 25) {
+      selectedColor = green;
+    }
+
+    //red
+    if (dist(170, 300, mouseX, mouseY) < 25) {
+      selectedColor = red;
+    }
+
+    //black
+    if (dist(120, 350, mouseX, mouseY) < 20) {
+      selectedColor = black;
+    }
   }
 
+  void controlSlider() {
+    if (mouseX>20 && mouseX<220 && mouseY>390 && mouseY<410) {
+      sliderX = mouseX;
+    }
+  } // -----------End of MouseDragged--
 
-  //save button
-  //  if(mouseX > 20 && mouseX < 220 && mouseY >
-
-
-  //pink
-  if (dist(70, 100, mouseX, mouseY) < 25) {
-    selectedColor = pink;
+  void tactile(int x, int y, int r) {
+    if (dist(x, y, mouseX, mouseY) < r) {
+      stroke(white);
+    } else {
+      stroke(black);
+    }
   }
 
-  //purple
-  if (dist(70, 200, mouseX, mouseY) <25) {
-    selectedColor = purple;
-  }
-
-  //blue
-  if (dist(70, 300, mouseX, mouseY) < 25) {
-    selectedColor = blue;
-  }
-
-  //orange
-  if (dist(170, 100, mouseX, mouseY) < 25) {
-    selectedColor = orange;
-  }
-
-  //green
-  if (dist(170, 200, mouseX, mouseY) < 25) {
-    selectedColor = green;
-  }
-
-  //red
-  if (dist(170, 300, mouseX, mouseY) < 25) {
-    selectedColor = red;
-  }
-
-  //black
-  if (dist(120, 350, mouseX, mouseY) < 20) {
-    selectedColor = black;
-  }
-}
-
-void controlSlider() {
-  if (mouseX>20 && mouseX<220 && mouseY>390 && mouseY<410) {
-    sliderX = mouseX;
-  }
-} // -----------End of MouseDragged--
-
-void tactile(int x, int y, int r) {
-  if (dist(x, y, mouseX, mouseY) < r) {
-    stroke(white);
-  } else {
-    stroke(black);
-  }
-}
-
-void tactile(int x, int y, int w, int h) {
-  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-    fill(yellow);
-  } else {
-    fill(white);
-  }
-} // ------------ End of Tactile ---------
+  void tactile(int x, int y, int w, int h) {
+    if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+      fill(yellow);
+    } else {
+      fill(white);
+    }
+  } // ------------ End of Tactile ---------
+  
+  void chiikawaOnOff() {
+    if (chiikawaOn == true) {
+      stroke(white);
+    } else {
+      stroke(black);
+    }
+ }
