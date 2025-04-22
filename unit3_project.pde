@@ -99,6 +99,9 @@ void draw() {
   //New Button
   textSize(20);
   stroke(black);
+  PFont newFont;
+  newFont = loadFont("LetterGothicStd.otf");
+  textFont(newFont);
   text("new", 120, 620);
   fill(white);
   rect(20, 600, 200, 40);
@@ -139,10 +142,22 @@ void mouseDragged() {
 }
 void mouseReleased() {
   controlSlider();
+  
+  //stamp
+if(chiikawaOn == true) {
+  image(chiikawa, mouseX, mouseY, 150, 200);
+} else {
+  //squigglyline
+  stroke(selectedColor);
+  strokeWeight(thickness);
+  line(pmouseX, pmouseY, mouseX, mouseY);
+}
+
 
   //new button
   if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
     background(white);
+    
   }
 
   //Chiikawa button
