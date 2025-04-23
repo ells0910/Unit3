@@ -99,19 +99,31 @@ void draw() {
   //New Button
   textSize(20);
   stroke(black);
-  PFont newFont;
-  newFont = loadFont("LetterGothicStd.otf");
-  textFont(newFont);
-  text("new", 120, 620);
   fill(white);
   rect(20, 600, 200, 40);
+  PFont newFont;
+  newFont = loadFont("EngraversMT-40.vlw");
+  fill(black);
+  textFont(newFont);
+  text("new",45,635);
 
   //Load Button
-  
+  fill(white);
   rect(20, 650, 200, 40);
+  fill(black);
+  PFont loadFont;
+  loadFont = loadFont("EngraversMT-40.vlw");
+  textFont(loadFont);
+  text("load",45,685);
 
   //Save Button
+  fill(white);
   rect(20, 700, 200, 40);
+  PFont saveFont;
+  loadFont = loadFont("EngraversMT-40.vlw");
+  fill(black);
+  text("save",48,735);
+
 
 
 
@@ -145,7 +157,7 @@ void mouseReleased() {
   
   //stamp
 if(chiikawaOn == true) {
-  image(chiikawa, mouseX, mouseY, 150, 200);
+  image(chiikawa, mouseX, mouseY, 100, 100);
 } else {
   //squigglyline
   stroke(selectedColor);
@@ -244,7 +256,7 @@ void chiikawaOnOff() {
 
 void saveImage(File f) {
   if (f != null) {
-    PImage canvas = get(71, 1, width-71, height-1);
+    PImage canvas = get(250, 1, width-250, height);
     canvas.save(f.getAbsolutePath());
   }
 }
