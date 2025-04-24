@@ -98,36 +98,36 @@ void draw() {
 
   //New Button
   textSize(20);
-  stroke(black);
-  fill(white);
+  tactile(20, 600, 200, 40);
   rect(20, 600, 200, 40);
   PFont newFont;
   newFont = loadFont("EngraversMT-40.vlw");
   fill(black);
   textFont(newFont);
-  text("new",45,635);
+  text("new", 45, 635);
 
   //Load Button
-  fill(white);
+  tactile(20, 650, 200, 40);
   rect(20, 650, 200, 40);
   fill(black);
   PFont loadFont;
   loadFont = loadFont("EngraversMT-40.vlw");
   textFont(loadFont);
-  text("load",45,685);
+  text("load", 45, 685);
 
   //Save Button
-  fill(white);
+  tactile(20, 700, 200, 40);
   rect(20, 700, 200, 40);
   PFont saveFont;
   loadFont = loadFont("EngraversMT-40.vlw");
   fill(black);
-  text("save",48,735);
+  text("save", 48, 735);
 
 
 
 
   //Slider
+  stroke(black);
   thickness = map(sliderX, 10, 400, 0, 40);
   line(20, 400, 220, 400);
   fill(black);
@@ -141,35 +141,39 @@ void draw() {
 
 void mouseDragged() {
   //stamp
-  if (chiikawaOn == false) {
+  if (250<mouseX) {
+    if (chiikawaOn == false) {
 
-    //squiggly line
-    controlSlider();
-    fill(selectedColor);
-    line(pmouseX, pmouseY, mouseX, mouseY);
+      //squiggly line
+      controlSlider();
+      fill(selectedColor);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      //chiikawa drawing
+      image(chiikawa, mouseX-30, mouseY-30, thickness*10, thickness*10);
+    }
   } else {
-    //chiikawa drawing
-    image(chiikawa, mouseX, mouseY, 100, 100);
-  }
+    noStroke();
+    chiikawaOn = false; 
+}
 }
 void mouseReleased() {
   controlSlider();
-  
+
   //stamp
-if(chiikawaOn == true) {
-  image(chiikawa, mouseX, mouseY, 100, 100);
-} else {
-  //squigglyline
-  stroke(selectedColor);
-  strokeWeight(thickness);
-  line(pmouseX, pmouseY, mouseX, mouseY);
-}
+  if (chiikawaOn == true) {
+    image(chiikawa, mouseX-30, mouseY-30, thickness*10, thickness*10);
+  } else {
+    //squigglyline
+    stroke(selectedColor);
+    strokeWeight(thickness);
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
 
 
   //new button
   if (mouseX > 20 && mouseX < 220 && mouseY > 600 && mouseY < 630) {
     background(white);
-    
   }
 
   //Chiikawa button
