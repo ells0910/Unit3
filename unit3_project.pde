@@ -142,6 +142,7 @@ void draw() {
 void mouseDragged() {
   //stamp
   if (250<mouseX) {
+   loop();
     if (chiikawaOn == false) {
 
       //squiggly line
@@ -153,8 +154,9 @@ void mouseDragged() {
       image(chiikawa, mouseX-30, mouseY-30, thickness*10, thickness*10);
     }
   } else {
-    noStroke();
-    chiikawaOn = false; 
+//    noStroke();
+//    chiikawaOn = false; 
+
 }
 }
 void mouseReleased() {
